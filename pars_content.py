@@ -13,14 +13,13 @@ def pars(url):
     x = ("".join(part))
     r = requests.get(url)
     sp = bs(r.text, "html.parser")
-    with open("data.txt", "w", encoding="utf-8") as f:
+    with open("data1.txt", "w", encoding="utf-8") as f:
         for tag in sp.find_all("a"):
             url = tag.get("href")
             if url is None:
                 continue
-            if "shtml" or "html" or "http" or "https" in url:
-                f.write("\n" + x + url)
-                    
+            if "html" in url:
+                f.write("\n" + url)
 
 
 pars(url)
